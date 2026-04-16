@@ -14,4 +14,14 @@ describe("Senha",()=>{
         // Assert
         expect(false).toBe(saida);
     });
+    test("Testa tamanho da senha (senha maior que o minimo)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_MAIOR_OU_IGUAL_8_CARACTERES});
+    
+        // Act
+        const saida = SenhaService.ValidarTamanho(senha)
+    
+        // Assert
+        expect(true).toBe(saida);
+    });
 })
