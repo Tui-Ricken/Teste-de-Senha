@@ -1,6 +1,5 @@
 class Senha{
-    constructor({id,senha}){
-        this.id=id;
+    constructor({senha}){
         this.senha=senha;
     }
 }   
