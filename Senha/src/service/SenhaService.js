@@ -1,23 +1,46 @@
 const { constantes } = require("../utils/constants");
 class SenhaService{
     static ValidarTamanho(senha){
-        if(senha.senha.length>=8) return true;
+        return senha.senha.length >= 8;
     }
 
     static validarLetraMaiuscula(senha){
-        if(/[A-Z]/.test(senha.senha)) return true;
+        return /[A-Z]/.test(senha.senha);
     }
 
     static validarLetraMinuscula(senha){
-        if((/[a-z]/).test(senha.senha)) return true;
+        return /[a-z]/.test(senha.senha);
     }
 
     static validarCaractereEspecial(senha){
-        if(/[^a-zA-Z0-9À-ÿ\s]/.test(senha.senha)) return true;
+        return /[^a-zA-Z0-9À-ÿ\s]/.test(senha.senha);
     }
 
-    static validarEspaço(senha){
-        if(/[ ]/.test(senha.senha)) return false;
+    static validarEspaco(senha){
+        return !/\s/.test(senha.senha);
+    }
+
+    static validarSenha(senha){
+        return this.ValidarTamanho(senha)
+            && this.validarLetraMaiuscula(senha)
+            && this.validarLetraMinuscula(senha)
+            && this.validarCaractereEspecial(senha)
+            && this.validarEspaco(senha);
+    }
+
+    static validarSenhaComErros(senha){
+        const erros = [];
+
+        if(!this.ValidarTamanho(senha)) erros.push("A senha precisa ter pelo menos 8 caracteres");
+        if(!this.validarLetraMaiuscula(senha)) erros.push("A senha precisa ter ao menos 1 letra maiúscula");
+        if(!this.validarLetraMinuscula(senha)) erros.push("A senha precisa ter ao menos 1 letra minúscula");
+        if(!this.validarCaractereEspecial(senha)) erros.push("A senha precisa ter ao menos 1 caractere especial (@!#$...)");
+        if(!this.validarEspaco(senha)) erros.push("A senha não pode conter espaços");
+
+        return {
+            valida: erros.length === 0,
+            erros
+        };
     }
 
 }
