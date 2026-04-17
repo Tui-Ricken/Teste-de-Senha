@@ -49,9 +49,19 @@ describe("Senha",()=>{
         const senha = new Senha({senha:constantes.SENHA_MAIUSCULA});
     
         // Act
-        const saida = SenhaService.validarLetraMaiuscula(SENHA_MAIUSCULA);
+        const saida = SenhaService.validarLetraMaiuscula(senha);
     
         // Assert
         expect(false).toBe(saida);
+    });
+    test("Testa se tem letra minuscula na senha(tem)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_CORRETA});
+    
+        // Act
+        const saida = SenhaService.validarLetraMaiuscula(senha);
+    
+        // Assert
+        expect(true).toBe(saida);
     });
 })
