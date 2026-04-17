@@ -44,4 +44,14 @@ describe("Senha",()=>{
         // Assert
         expect(true).toBe(saida);
     });
+    test("Testa se tem letra minuscula na senha(não tem)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_MAIUSCULA});
+    
+        // Act
+        const saida = SenhaService.validarLetraMaiuscula(SENHA_MAIUSCULA);
+    
+        // Assert
+        expect(false).toBe(saida);
+    });
 })
