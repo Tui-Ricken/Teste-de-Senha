@@ -15,5 +15,10 @@ class SenhaService{
     static validarCaractereEspecial(senha){
         if(/[^a-zA-Z0-9À-ÿ\s]/.test(senha.senha)) return true;
     }
+
+    static validarEspaço(senha){
+        if(/[ ]/.test(senha.senha)) return false;
+    }
+
 }
 module.exports = {SenhaService};
