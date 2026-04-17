@@ -49,7 +49,7 @@ describe("Senha",()=>{
         const senha = new Senha({senha:constantes.SENHA_MAIUSCULA});
     
         // Act
-        const saida = SenhaService.validarLetraMaiuscula(senha);
+        const saida = SenhaService.validarLetraMinuscula(senha);
     
         // Assert
         expect(false).toBe(saida);
@@ -59,9 +59,10 @@ describe("Senha",()=>{
         const senha = new Senha({senha:constantes.SENHA_CORRETA});
     
         // Act
-        const saida = SenhaService.validarLetraMaiuscula(senha);
+        const saida = SenhaService.validarLetraMinuscula(senha);
     
         // Assert
         expect(true).toBe(saida);
     });
+    
 })
