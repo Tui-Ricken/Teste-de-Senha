@@ -65,4 +65,14 @@ describe("Senha",()=>{
         expect(true).toBe(saida);
     });
     
+    test("Testa se tem caractere especial na senha(não tem)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_MAIUSCULA});
+    
+        // Act
+        const saida = SenhaService.validarCaractereEspecial(senha);
+    
+        // Assert
+        expect(false).toBe(saida);
+    });
 })
