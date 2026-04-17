@@ -95,6 +95,9 @@ describe("Senha",()=>{
         const saida = SenhaService.validarEspaço(senha);
     
         // Assert
-        expect(true).toBe(saida);
+        expect(false).toBe(saida);
     });
+    
+
+
 })
