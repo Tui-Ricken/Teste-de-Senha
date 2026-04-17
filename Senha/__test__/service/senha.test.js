@@ -24,7 +24,7 @@ describe("Senha",()=>{
         // Assert
         expect(true).toBe(saida);
     });
-    test("Testa se tem letra maiuscula na senha", () => {
+    test("Testa se tem letra maiuscula na senha(não tem)", () => {
         // Arrange
         const senha = new Senha({senha:constantes.SENHA_MAIOR_OU_IGUAL_8_CARACTERES});
     
@@ -33,5 +33,15 @@ describe("Senha",()=>{
     
         // Assert
         expect(false).toBe(saida);
+    });
+    test("Testa se tem letra maiuscula na senha(tem)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_CORRETA});
+    
+        // Act
+        const saida = SenhaService.validarLetraMaiuscula(senha)
+    
+        // Assert
+        expect(true).toBe(saida);
     });
 })
