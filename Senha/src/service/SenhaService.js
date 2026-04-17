@@ -17,7 +17,7 @@ class SenhaService{
     }
 
     static validarEspaço(senha){
-        if(/[ ]/.test(senha.senha)) return false;
+        if(/[ ]/.test(senha.senha)) return true;
     }
 
 }
