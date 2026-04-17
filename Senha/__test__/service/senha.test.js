@@ -65,7 +65,7 @@ describe("Senha",()=>{
         expect(true).toBe(saida);
     });
     
-    test("Testa se tem caractere especial na senha(não tem)", () => {
+    test("Testa se tem caractere especial na senha(tem)", () => {
         // Arrange
         const senha = new Senha({senha:constantes.SENHA_MAIUSCULA});
     
@@ -82,6 +82,17 @@ describe("Senha",()=>{
     
         // Act
         const saida = SenhaService.validarCaractereEspecial(senha);
+    
+        // Assert
+        expect(true).toBe(saida);
+    });
+
+    test("Testa se tem espaço na senha(tem)", () => {
+        // Arrange
+        const senha = new Senha({senha:constantes.SENHA_ESPAÇO});
+    
+        // Act
+        const saida = SenhaService.validarEspaço(senha);
     
         // Assert
         expect(true).toBe(saida);
