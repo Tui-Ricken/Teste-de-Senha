@@ -11,5 +11,9 @@ class SenhaService{
     static validarLetraMinuscula(senha){
         if((/[a-z]/).test(senha.senha)) return true;
     }
+
+    static validarCaractereEspecial(senha){
+        if(/[^a-zA-Z0-9À-ÿ\s]/.test(senha.senha)) return true;
+    }
 }
 module.exports = {SenhaService};
