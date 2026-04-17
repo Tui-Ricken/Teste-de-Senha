@@ -92,7 +92,7 @@ describe("Senha",()=>{
         const senha = new Senha({senha:constantes.SENHA_ESPAÇO});
     
         // Act
-        const saida = SenhaService.validarEspaço(senha);
+        const saida = SenhaService.validarEspaco(senha);
     
         // Assert
         expect(false).toBe(saida);
@@ -103,10 +103,36 @@ describe("Senha",()=>{
         const senha = new Senha({senha:constantes.SENHA_CORRETA});
     
         // Act
-        const saida = SenhaService.validarEspaço(senha);
+        const saida = SenhaService.validarEspaco(senha);
     
         // Assert
         expect(true).toBe(saida);
     });
+
+    test("Retorna erros por regra quando senha é inválida", () => {
+            // Arrange
+            const senha = new Senha({senha:"abc"});
+
+            // Act
+            const saida = SenhaService.validarSenhaComErros(senha);
+
+            // Assert
+            expect(saida.valida).toBe(false);
+            expect(saida.erros).toContain("A senha precisa ter pelo menos 8 caracteres");
+            expect(saida.erros).toContain("A senha precisa ter ao menos 1 letra maiúscula");
+            expect(saida.erros).toContain("A senha precisa ter ao menos 1 caractere especial (@!#$...)");
+        });
+
+        test("Retorna sem erros quando senha é válida", () => {
+            // Arrange
+            const senha = new Senha({senha:constantes.SENHA_CORRETA});
+
+            // Act
+            const saida = SenhaService.validarSenhaComErros(senha);
+
+            // Assert
+            expect(saida.valida).toBe(true);
+            expect(saida.erros).toEqual([]);
+        });
 
 })
